@@ -1,4 +1,4 @@
-package sample.sneppets.ssl;
+package sample.snippets.ssl;
 
 import java.io.File;
 import java.io.FileOutputStream;

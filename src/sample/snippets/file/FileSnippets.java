@@ -1,4 +1,4 @@
-package sample.sneppets.file;
+package sample.snippets.file;
 
 import java.io.File;
 import java.io.FileReader;
