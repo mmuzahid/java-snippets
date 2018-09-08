@@ -6,17 +6,31 @@ import java.lang.reflect.Method;
 public class ReflectionSnippets {
 
 	public static void main(String[] args) {
-		methodInvokeExample();
+		ReflectionTestBean bean = createInstanceExample("sample.snippets.reflection.ReflectionTestBean");
+		methodInvokeExample(bean);
 	}
 
-	private static void methodInvokeExample() {
-		ReflectionTestBean bean = new ReflectionTestBean();
-
-		Method m;
+	private static ReflectionTestBean createInstanceExample(String className) {
 		try {
-			m = bean.getClass().getMethod("publicMethod", null);
-			m.invoke(bean, null);
-		} catch (NoSuchMethodException | SecurityException e) {
+			Class clazz = Class.forName(className);
+			ReflectionTestBean obj = (ReflectionTestBean) clazz.newInstance();
+			System.out.println("Object Created: " + obj);
+			return obj;
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (InstantiationException e) {
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	private static void methodInvokeExample(ReflectionTestBean bean) {
+		try {
+			Method method = bean.getClass().getMethod("executePublicMethod", null);
+			method.invoke(bean, null);
+		} catch (NoSuchMethodException e) {
 			e.printStackTrace();
 		} catch (IllegalAccessException e) {
 			e.printStackTrace();
@@ -27,26 +41,4 @@ public class ReflectionSnippets {
 		}
 	}
 
-}
-
-class ReflectionTestBean {
-	private int privateInt;
-	public String publicString;
-
-	ReflectionTestBean() {
-
-	}
-
-	ReflectionTestBean(int privateInt, String publicString) {
-		this.privateInt = privateInt;
-		this.publicString = publicString;
-	}
-
-	private void privateMethod() {
-		System.out.println("privateMethod invoked!");
-	}
-
-	public void publicMethod() {
-		System.out.println("publicMethod invoked!");
-	}
 }

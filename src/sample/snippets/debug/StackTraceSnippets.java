@@ -7,37 +7,35 @@ public class StackTraceSnippets {
 	}
 
 	private static void getStackTracePrintExmaple() {
-		HelloObject helloObject = new HelloObject();
-		try {
-			helloObject.sayHelloWithPrintTrace();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		sayHelloWithManualStackTrace();
+		sayHelloWithSystemStackTrace();
 	}
-}
-
-class HelloObject {
-	public void sayHelloWithPrintTrace() throws Exception {
+	
+	
+	public static void sayHelloWithManualStackTrace() {
 		System.out.println(getHelloMessage());
 		printStackTraceManually();
+	}
+
+	public static void sayHelloWithSystemStackTrace() {
+		System.out.println(getHelloMessage());
 		getSystemStackTrace();
-		throw new Exception();
 	}
-
+	
 	@SuppressWarnings("static-access")
-	private void getSystemStackTrace() {
-		Thread.currentThread().dumpStack();		
+	private static void getSystemStackTrace() {
+		Thread.currentThread().dumpStack();
 	}
 
-	public String getHelloMessage() {
+	public static String getHelloMessage() {
 		return "Hello World by " + getDefaultUser();
 	}
 	
-	public String getDefaultUser() {
+	public static String getDefaultUser() {
 		return "Test User";
 	}
 
-	public void printStackTraceManually() {
+	public static void printStackTraceManually() {
 		// manually print stacktrace
 		StackTraceElement[] traces = Thread.currentThread().getStackTrace();
 		for (StackTraceElement trace : traces) {
@@ -48,4 +46,6 @@ class HelloObject {
 		}
 	}
 
+	
+	
 }
