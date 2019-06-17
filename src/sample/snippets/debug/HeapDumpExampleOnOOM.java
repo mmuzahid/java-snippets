@@ -3,7 +3,7 @@ import java.util.List;
 import java.util.Random;
 /**
 Run with following JVM option:
--Xmx4m -XX:+HeapDumpOnOutOfMemoryError -XX:ErrorFile=./hs_err_pid.log
+java -Xmx4M -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=E:/java_heapdump.hprof HeapDumpExampleOnOOM	
 
 */
 public class HeapDumpExampleOnOOM {
