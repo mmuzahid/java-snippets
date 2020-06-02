@@ -6,7 +6,7 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 import java.util.Arrays;
 
-public class InterfaceProxyExample {
+public class JdkDynamicProxyExample {
 
 	public static void main(String[] args) {
 		// original / target object
