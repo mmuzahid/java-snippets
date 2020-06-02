@@ -2,3 +2,7 @@
 /.classpath
 /.project
 /temp/
+.classpath
+.project
+target
+.settings
