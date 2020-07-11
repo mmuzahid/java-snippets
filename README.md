@@ -5,6 +5,7 @@ Trying to add some sample Java code on:
 - Mail Sending
 - Commandline Debugging
 - File Operation
-- Reference 
+- Reference
+- Proxy
 
 *(to be continued)*
